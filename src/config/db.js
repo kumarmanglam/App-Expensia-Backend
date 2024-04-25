@@ -12,5 +12,4 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     rejectUnauthorized: false,
   },
 });
-console.log("nnnnn", res, process.env.DATABASE_URL);
 module.exports = { sequelize, DataTypes };

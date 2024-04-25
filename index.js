@@ -5,14 +5,16 @@ const incomeRouter = require("./src/routes/incomeRoute");
 const investmentRouter = require("./src/routes/investmentRoute");
 const expenseRouter = require("./src/routes/expenseRouter");
 const protect = require("./src/middleware/authMiddleware");
+const cors = require("cors");
 
 const app = express();
 const res = require("dotenv").config();
+app.use(cors());
 
-// console.log(res);
-
-app.use(express.static("public"));
-
+// app.use(express.static("public"));
+app.get("/", async (req, res) => {
+  res.send("Expensia backend BASE API");
+});
 app.use(express.json());
 app.use("/auth", userRouter);
 app.use("/", protect); // Apply protect middleware here
@@ -21,11 +23,6 @@ app.use("/", incomeRouter);
 app.use("/", investmentRouter);
 app.use("/", expenseRouter);
 
-app.get("/get", protect, async (req, res) => {
-  res.send("protected url working");
-});
-
-app.get("/", (req, res) => res.send("Express on Vercel"));
-app.listen(3000, () => console.log("Server ready on port 3000."));
+app.listen(4000, () => console.log("Server ready on port 4000."));
 
 module.exports = app;
