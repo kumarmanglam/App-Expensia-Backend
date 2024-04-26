@@ -10,7 +10,7 @@ app.use(cors());
 
 // app.use(express.static("public"));
 app.get("/", async (req, res) => {
-  res.send("Expensia backend BASE API");
+  res.send("Expensia Backend API is working");
 });
 app.use(express.json());
 app.use("/auth", userRouter);
